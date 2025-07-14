@@ -1,0 +1,54 @@
+{
+    "name": "RPGInputActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "b8541854-5a04-440d-a9a8-f63209fcf888",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "6d38cc9a-00c0-4ec4-b630-0e576eac4007",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MousePos",
+                    "type": "Value",
+                    "id": "ac74bf31-de82-4574-b95d-12308c4df596",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e633a507-f44d-4117-913c-28f2a0b9cc5b",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d1e21a25-da51-40b3-980d-8c096d2c91bc",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

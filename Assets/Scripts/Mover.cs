@@ -21,7 +21,7 @@ public class Mover : MonoBehaviour
 
     private void Start()
     {
-        agent.speed *= moveSpeed;
+        //agent.speed *= moveSpeed;
     }
 
     private void Update()

@@ -13,26 +13,29 @@ public class Mover : MonoBehaviour
     // Cache components
 
     NavMeshAgent agent;
+    Animator animator;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
-        //agent.speed *= moveSpeed;
+        
     }
 
     private void Update()
     {
-        //MoveTowardsTarget();
+        
         ClickToMove();
+        UpdateAnimator();
     }
 
     private void ClickToMove()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -52,12 +55,13 @@ public class Mover : MonoBehaviour
         //Debug.DrawRay(lastRay.origin, lastRay.direction * 100f);
     }
 
-    void MoveTowardsTarget()
-    {
-        if (targetTransform != null)
-        { 
-            agent.destination = targetTransform.position;
-            
-        }
+    void UpdateAnimator()
+    { 
+        Vector3 velocity = agent.velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity); // converts world space velocity to local space velocity
+
+        float speed = localVelocity.z;
+        animator.SetFloat("forwardSpeed", speed);
     }
+
 }

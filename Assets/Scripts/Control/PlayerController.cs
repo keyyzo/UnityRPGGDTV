@@ -1,38 +1,96 @@
 using UnityEngine;
+using RPG.Movement;
+using System;
+using RPG.Combat;
 
-public class PlayerController : MonoBehaviour
+namespace RPG.Control
 {
-
-
-    // Cache components
-
-    Mover mover;
-
-    private void Awake()
+    public class PlayerController : MonoBehaviour
     {
-        mover = GetComponent<Mover>();
-    }
 
-    private void Update()
-    {
-        if (Input.GetMouseButton(0))
+
+        // Cache components
+
+        Mover mover;
+        Fighter fighter;
+
+        private void Awake()
         {
-            ClickToMove();
-        }
-    }
-
-    private void ClickToMove()
-    {
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        bool hasHit = Physics.Raycast(ray, out hit);
-
-        if (hasHit)
-        {
-            mover.MoveTo(hit.point);
+            mover = GetComponent<Mover>();
+            fighter = GetComponent<Fighter>();
         }
 
+        private void Update()
+        {
+            if (InteractWithCombat())
+                return;
+            if (InteractWithMovement())
+                return;
+            Debug.Log("Nothing to do");
+        }
+
+        private bool InteractWithCombat()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+
+            foreach (RaycastHit hit in hits)
+            {
+                if (hit.collider.TryGetComponent(out Target targetToHit))
+                {
+                    if (targetToHit == null) continue;
+
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        fighter.Attack(targetToHit);
+
+                    }
+                    return true;
+                }
+            }
+
+            return false;
+        } 
+
+        private bool InteractWithMovement()
+        {
+            RaycastHit hit;
+
+            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+
+            if (hasHit)
+            {
+                if (Input.GetMouseButton(0))
+                {
+                    mover.MoveTo(hit.point);
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
+        private void MoveToCursor()
+        {
+            RaycastHit hit;
+
+            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+
+            if (hasHit)
+            {
+                if (Input.GetMouseButton(0))
+                {
+                    mover.MoveTo(hit.point);
+                }
+
+                
+            }
+
+        } // NO LONGER USED, KEEPING FOR POTENTIAL BACKTRACKING
+
+        private static Ray GetMouseRay()
+        {
+            return Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
     }
 }

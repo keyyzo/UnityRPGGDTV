@@ -28,31 +28,15 @@ public class Mover : MonoBehaviour
 
     private void Update()
     {
-        
-        ClickToMove();
+
         UpdateAnimator();
     }
 
-    private void ClickToMove()
+    
+
+    public void MoveTo(Vector3 destination)
     {
-        if (Input.GetMouseButton(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            bool hasHit = Physics.Raycast(ray, out hit);
-
-            if (hasHit)
-            { 
-                agent.destination = hit.point;
-            }
-
-            //lastRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            
-        }
-
-        //Debug.DrawRay(lastRay.origin, lastRay.direction * 100f);
+        agent.destination = destination;
     }
 
     void UpdateAnimator()

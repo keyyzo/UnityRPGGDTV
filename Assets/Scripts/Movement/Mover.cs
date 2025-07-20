@@ -48,6 +48,7 @@ namespace RPG.Movement
         {
             agent.destination = destination;
             agent.isStopped = false;
+            
         }
 
         public void Cancel()

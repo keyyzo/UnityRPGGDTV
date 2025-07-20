@@ -13,7 +13,7 @@ namespace RPG.Combat
 
         // Private variables
 
-        Transform target;
+        Health target;
         float timeSinceLastAttack = 0.0f;
 
         // Cached components
@@ -36,9 +36,13 @@ namespace RPG.Combat
             if (target == null)
                 return;
 
+            if (target.IsDead)
+                return;
+            
+
             if (!IsInRange())
             {
-                mover.MoveTo(target.position);
+                mover.MoveTo(target.transform.position);
 
             }
 
@@ -54,19 +58,24 @@ namespace RPG.Combat
 
         public bool IsInRange()
         {
-            return Vector3.Distance(transform.position, target.position) < weaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
         }
 
         public void Attack(Target targetToAttack)
         {
             actionScheduler.StartAction(this);
-            target = targetToAttack?.transform;
+            if (targetToAttack.TryGetComponent(out Health targetHealth))
+            {
+                target = targetHealth;
+            }
+            
 
             
         }
 
         public void Cancel()
-        { 
+        {
+            animator.SetTrigger("stopAttack");
             target = null;
         }
 
@@ -87,10 +96,12 @@ namespace RPG.Combat
         // Animation Event
         void Hit()
         {
-            if (target.TryGetComponent(out Health targetHealth))
-            {
-                targetHealth?.TakeDamage(weaponDamage);
-            }
+            //if (target.TryGetComponent(out Health targetHealth))
+            //{
+            //    targetHealth?.TakeDamage(weaponDamage);
+            //}
+
+            target?.TakeDamage(weaponDamage);
         }
 
     }

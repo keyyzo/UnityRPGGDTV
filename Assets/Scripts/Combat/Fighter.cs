@@ -14,7 +14,7 @@ namespace RPG.Combat
         // Private variables
 
         Health target;
-        float timeSinceLastAttack = 0.0f;
+        float timeSinceLastAttack = Mathf.Infinity;
 
         // Cached components
 

@@ -1,4 +1,5 @@
 using RPG.Combat;
+using RPG.Core;
 using RPG.Movement;
 using UnityEngine;
 
@@ -13,23 +14,34 @@ namespace RPG.Control
 
         Mover mover;
         Fighter fighter;
+        Health health;
+
+        // Cached player object
 
         GameObject playerObj;
+
+        // Private variables
+
+        Vector3 guardPosition;
 
         private void Awake()
         {
             mover = GetComponent<Mover>();
             fighter = GetComponent<Fighter>();
+            health = GetComponent<Health>();
         }
 
         private void Start()
         {
             playerObj = GameObject.FindWithTag("Player");
+
+            guardPosition = transform.position;
         }
 
         private void Update()
         {
-
+            if (health.IsDead) 
+                return;
 
             if (InAttackRangeOfPlayer() && fighter.CanAttack(playerObj))
             {
@@ -42,6 +54,7 @@ namespace RPG.Control
             else
             {
                 fighter.Cancel();
+                mover.StartMoveAction(guardPosition);
             }
         }
 
@@ -53,5 +66,11 @@ namespace RPG.Control
             return distanceToPlayer < chaseDistanceRadius;
         }
 
+        // Called by Unity
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, chaseDistanceRadius);
+        }
     }
 }

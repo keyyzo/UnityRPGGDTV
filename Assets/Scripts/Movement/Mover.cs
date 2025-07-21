@@ -1,5 +1,6 @@
 
 using RPG.Core;
+using UnityEditor.Analytics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,12 +20,14 @@ namespace RPG.Movement
         NavMeshAgent agent;
         Animator animator;
         ActionScheduler actionScheduler;
+        Health health;
 
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
+            health = GetComponent<Health>();
         }
 
         private void Start()
@@ -34,6 +37,7 @@ namespace RPG.Movement
 
         private void Update()
         {
+            agent.enabled = !health.IsDead;
 
             UpdateAnimator();
         }

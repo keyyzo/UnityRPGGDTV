@@ -37,11 +37,12 @@ namespace RPG.Control
             {
                 if (hit.collider.TryGetComponent(out Target targetToHit))
                 {
-                    if (!fighter.CanAttack(targetToHit)) continue;
+                    
+                    if (!fighter.CanAttack(targetToHit.gameObject)) continue;
 
                     if (Input.GetMouseButtonDown(0))
                     {
-                        fighter.Attack(targetToHit);
+                        fighter.Attack(targetToHit.gameObject);
 
                     }
                     return true;

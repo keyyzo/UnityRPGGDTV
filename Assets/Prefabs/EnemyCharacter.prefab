@@ -175,3 +175,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseDistanceRadius: 5
+  suspiciousTime: 5

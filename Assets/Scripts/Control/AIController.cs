@@ -8,6 +8,7 @@ namespace RPG.Control
     public class AIController : MonoBehaviour
     {
         [SerializeField] float chaseDistanceRadius = 5f;
+        [SerializeField] float suspiciousTime = 3f;
 
 
         // cached components
@@ -15,6 +16,7 @@ namespace RPG.Control
         Mover mover;
         Fighter fighter;
         Health health;
+        ActionScheduler actionScheduler;
 
         // Cached player object
 
@@ -23,12 +25,16 @@ namespace RPG.Control
         // Private variables
 
         Vector3 guardPosition;
+        Vector3 playerLastSeenPosition;
+
+        float timeSinceLastSawPlayer = Mathf.Infinity;
 
         private void Awake()
         {
             mover = GetComponent<Mover>();
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
+            actionScheduler = GetComponent<ActionScheduler>();
         }
 
         private void Start()
@@ -47,15 +53,39 @@ namespace RPG.Control
             {
                 Debug.Log(gameObject.name + " can give chase");
 
-                fighter.Attack(playerObj);
+                timeSinceLastSawPlayer = 0.0f;
+                AttackBehaviour();
 
+            }
+
+            else if(timeSinceLastSawPlayer < suspiciousTime)
+            {
+                // Suspicion state
+                SuspicionBehaviour();
             }
 
             else
             {
-                fighter.Cancel();
-                mover.StartMoveAction(guardPosition);
+                GuardBehaviour();
             }
+
+            timeSinceLastSawPlayer += Time.deltaTime;
+        }
+
+        private void GuardBehaviour()
+        {
+            fighter.Cancel();
+            mover.StartMoveAction(guardPosition);
+        }
+
+        private void SuspicionBehaviour()
+        {
+            actionScheduler.CancelCurrentAction();
+        }
+
+        private void AttackBehaviour()
+        {
+            fighter.Attack(playerObj);
         }
 
         private bool InAttackRangeOfPlayer()

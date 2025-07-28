@@ -3,6 +3,7 @@ using RPG.Core;
 using RPG.Movement;
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace RPG.Control
 {
@@ -14,6 +15,9 @@ namespace RPG.Control
         [SerializeField] float waypointTolerance = 1f;
         [SerializeField] float waypointDwellingTime = 3f;
 
+        [Range(0,1)]
+        [SerializeField] float patrolSpeedFraction = 0.2f;
+
 
         // cached components
 
@@ -21,6 +25,7 @@ namespace RPG.Control
         Fighter fighter;
         Health health;
         ActionScheduler actionScheduler;
+        NavMeshAgent agent;
 
         // Cached player object
 
@@ -41,6 +46,7 @@ namespace RPG.Control
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
             actionScheduler = GetComponent<ActionScheduler>();
+            agent = GetComponent<NavMeshAgent>();
         }
 
         private void Start()
@@ -104,7 +110,7 @@ namespace RPG.Control
 
             if (timeSinceArriveAtWaypoint > waypointDwellingTime)
             {
-                mover.StartMoveAction(nextPosition);
+                mover.StartMoveAction(nextPosition, patrolSpeedFraction);
             }
             
         }

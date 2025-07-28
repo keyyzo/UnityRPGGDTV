@@ -300,7 +300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3090597684695802879, guid: d2f7ca14be619704d9d95587c4e25b13, type: 3}
       propertyPath: healthPoints
-      value: 15
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3133239835375604759, guid: d2f7ca14be619704d9d95587c4e25b13, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 5043802492059801610, guid: d2f7ca14be619704d9d95587c4e25b13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -345,6 +349,10 @@ PrefabInstance:
     - target: {fileID: 5427024966121930035, guid: d2f7ca14be619704d9d95587c4e25b13, type: 3}
       propertyPath: m_Speed
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8580248901176035381, guid: d2f7ca14be619704d9d95587c4e25b13, type: 3}
+      propertyPath: maxSpeed
+      value: 4.75
       objectReference: {fileID: 0}
     - target: {fileID: 8580248901176035381, guid: d2f7ca14be619704d9d95587c4e25b13, type: 3}
       propertyPath: moveSpeed
@@ -407,3 +415,4 @@ MonoBehaviour:
   patrolPath: {fileID: 0}
   waypointTolerance: 1
   waypointDwellingTime: 3
+  patrolSpeedFraction: 0.3

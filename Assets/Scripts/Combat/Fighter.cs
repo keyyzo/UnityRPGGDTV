@@ -87,6 +87,7 @@ namespace RPG.Combat
         {
             ResetAttack();
             target = null;
+            mover.Cancel();
         }
 
         private void ResetAttack()

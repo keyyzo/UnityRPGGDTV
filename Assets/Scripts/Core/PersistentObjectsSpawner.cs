@@ -1,16 +1,33 @@
+using System;
 using UnityEngine;
 
-public class PersistentObjectsSpawner : MonoBehaviour
+namespace RPG.Core
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class PersistentObjectsSpawner : MonoBehaviour
     {
-        
-    }
+        [SerializeField] GameObject persistentObjectPrefab;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        static bool hasSpawned = false;
+
+        private void Awake()
+        {
+            if (hasSpawned)
+                return;
+
+            SpawnPersistentObjects();
+
+            hasSpawned = true;
+        }
+
+        private void SpawnPersistentObjects()
+        {
+            GameObject persistentObject = Instantiate(persistentObjectPrefab);
+            DontDestroyOnLoad(persistentObject);
+        }
+
+        private void OnApplicationQuit()
+        {
+            hasSpawned = false;
+        }
     }
 }

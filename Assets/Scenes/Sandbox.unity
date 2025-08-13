@@ -2118,6 +2118,10 @@ PrefabInstance:
       propertyPath: chaseDistanceRadius
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8269665729866786131, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 2cb8b3ce-028c-4991-9a49-e472ee757777
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2363,6 +2367,10 @@ PrefabInstance:
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 5439950699384234462}
+    - target: {fileID: 8269665729866786131, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 574ff99f-4c4d-4b1a-a463-2fea5502f631
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4191,6 +4199,10 @@ PrefabInstance:
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 1221626580}
+    - target: {fileID: 8269665729866786131, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 0e071e4e-4414-4730-8a7a-8b4909a6b1ed
+      objectReference: {fileID: 0}
     - target: {fileID: 8882881345699123237, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
       propertyPath: healthPoints
       value: 15
@@ -4365,6 +4377,10 @@ PrefabInstance:
       propertyPath: waypointDwellingTime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8269665729866786131, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
+      propertyPath: uniqueIdentifier
+      value: c16420d1-c806-413b-b1ef-644a39f3ebf4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4524,6 +4540,10 @@ PrefabInstance:
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 1309540028}
+    - target: {fileID: 8269665729866786131, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 461e8586-4d1f-4406-aa41-e448bd203cc2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4641,6 +4661,10 @@ PrefabInstance:
     - target: {fileID: 8217212135174959748, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
       propertyPath: waypointDwellingTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269665729866786131, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 625cd48d-d6f5-4605-8bf0-d38b84d5d84a
       objectReference: {fileID: 0}
     - target: {fileID: 8882881345699123237, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
       propertyPath: healthPoints
@@ -5402,6 +5426,10 @@ PrefabInstance:
       propertyPath: waypointDwellingTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8269665729866786131, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 7affdc80-4bcb-47c0-adda-a0b4b4270bb5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5962,6 +5990,10 @@ PrefabInstance:
       propertyPath: patrolPath
       value: 
       objectReference: {fileID: 576838830}
+    - target: {fileID: 8269665729866786131, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 2a5b4c93-679b-4d71-a5d9-da1b84d99f7a
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6179,6 +6211,10 @@ PrefabInstance:
     - target: {fileID: 8217212135174959748, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
       propertyPath: chaseDistanceRadius
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269665729866786131, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 2244dbc5-6608-4351-95be-a556c6f9654b
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6437,6 +6473,10 @@ PrefabInstance:
     - target: {fileID: 8217212135174959748, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
       propertyPath: waypointDwellingTime
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8269665729866786131, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 033fb42d-3431-4c6d-97d1-e893a675a8e9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8167,6 +8207,10 @@ PrefabInstance:
       propertyPath: waypointDwellingTime
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8269665729866786131, guid: 474d65d123b7a7943a715b80ba897184, type: 3}
+      propertyPath: uniqueIdentifier
+      value: 685b356b-8608-4deb-8c9e-0fd5a579af3b
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9509,6 +9553,10 @@ PrefabInstance:
     - target: {fileID: 3399865867369622594, guid: 4df35838d9a57674cb61964cf3ff4bcc, type: 3}
       propertyPath: m_Name
       value: CORE
+      objectReference: {fileID: 0}
+    - target: {fileID: 5042251381988542509, guid: 4df35838d9a57674cb61964cf3ff4bcc, type: 3}
+      propertyPath: uniqueIdentifier
+      value: fca1f3d5-fd1e-4d55-aae2-a2b5baa119d9
       objectReference: {fileID: 0}
     - target: {fileID: 6243203905735779466, guid: 4df35838d9a57674cb61964cf3ff4bcc, type: 3}
       propertyPath: m_LocalPosition.x

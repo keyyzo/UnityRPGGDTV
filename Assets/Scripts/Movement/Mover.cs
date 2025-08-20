@@ -1,9 +1,11 @@
 
 using RPG.Core;
 using UnityEditor.Analytics;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Saving;
+using System.Collections.Generic;
 
 namespace RPG.Movement
 {
@@ -73,17 +75,51 @@ namespace RPG.Movement
             animator.SetFloat("forwardSpeed", speed);
         }
 
+        [System.Serializable]
+        struct MoverSaveData
+        {
+            public SerializableVector3 position;
+            public SerializableVector3 rotation;
+        }
+
         public object CaptureState()
         {
-            return new SerializableVector3(transform.position);
+            // Dictionary implementation -----------------------------------------
+
+            //Dictionary<string, object> data = new Dictionary<string, object>();
+
+            //data["position"] = new SerializableVector3(transform.position);
+            //data["rotation"] = new SerializableVector3(transform.eulerAngles);
+            //return data;
+
+            // Struct implementation --------------------------------------
+
+            MoverSaveData dataStruct = new MoverSaveData();
+            dataStruct.position = new SerializableVector3(transform.position);
+            dataStruct.rotation = new SerializableVector3(transform.eulerAngles);
+            return dataStruct;
+
         }
 
         public void RestoreState(object state)
         {
-            SerializableVector3 position = (SerializableVector3)state;
+            // Dictionary implementation -----------------------------------------
+
+            //Dictionary<string, object> data = (Dictionary<string, object>)state;
+
+            //agent.enabled = false;
+            //transform.position = ((SerializableVector3)data["position"]).ToVector();
+            //transform.eulerAngles = ((SerializableVector3)data["rotation"]).ToVector();
+            //agent.enabled = true;
+
+            // Struct implementation --------------------------------------
+
+            MoverSaveData data = (MoverSaveData)state;
             agent.enabled = false;
-            transform.position = position.ToVector();
+            transform.position = data.position.ToVector();
+            transform.eulerAngles = data.rotation.ToVector();
             agent.enabled = true;
+
         }
     }
 }
